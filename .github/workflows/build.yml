@@ -26,7 +26,6 @@ jobs:
 
       - name: Install sources
         run: |
-            #sudo apt-get -y update && sudo apt-get -y install wget
             wget http://www.mplayerhq.hu/MPlayer/releases/MPlayer-${{env.version}}.tar.xz
             tar -xf MPlayer-${{env.version}}.tar.xz
             cp debian/* MPlayer-${{env.version}}/debian/
