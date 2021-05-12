@@ -157,7 +157,8 @@ binary-arch: install-arch
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-indep binary-arch
+#binary: binary-indep binary-arch
+binary: binary-arch
 
 PHONY += build clean binary-indep binary-arch binary-common binary
 PHONY += install binary binary-arch binary-indep clean checkroot get-orig-source
