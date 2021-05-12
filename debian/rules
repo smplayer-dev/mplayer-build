@@ -44,9 +44,11 @@ CONFIGURE_FLAGS = \
 	--confdir=/etc/mplayer \
 	--enable-xvmc \
 	--enable-menu \
-	--enable-radio --enable-radio-capture \
 	--disable-arts \
 	--language=all \
+	--disable-libmpeg2-internal \
+	--disable-ffmpeg_a \
+	--disable-esd \
 	$(archconf)
 
 ifeq ($(DEB_HOST_ARCH),i386)
