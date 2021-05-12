@@ -46,9 +46,9 @@ CONFIGURE_FLAGS = \
 	--enable-menu \
 	--disable-arts \
 	--language=all \
-	--disable-libmpeg2-internal \
-	--disable-ffmpeg_a \
 	--disable-esd \
+	#--disable-libmpeg2-internal \
+	#--disable-ffmpeg_a \
 	$(archconf)
 
 ifeq ($(DEB_HOST_ARCH),i386)

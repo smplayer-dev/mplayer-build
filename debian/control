@@ -70,13 +70,14 @@ Build-Depends:
  vstream-client-dev,
  x11proto-core-dev,
  yasm,
- zlib1g-dev,
- libavcodec-dev,
- libavformat-dev,
- libavutil-dev,
- libpostproc-dev,
- libswscale-dev,
- libass-dev
+ zlib1g-dev
+#,
+# libavcodec-dev,
+# libavformat-dev,
+# libavutil-dev,
+# libpostproc-dev,
+# libswscale-dev,
+# libass-dev
 Build-Depends-Indep:
  docbook-xml,
  docbook-xsl,
