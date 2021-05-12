@@ -89,8 +89,7 @@ ifneq (,$(DEB_EXTRA_CONFIGURE_FLAGS))
     CONFIGURE_FLAGS += $(DEB_EXTRA_CONFIGURE_FLAGS)
 endif
 
-#build: build-arch build-indep
-build: build-arch
+build: build-arch build-indep
 
 ####### build-arch
 build-arch:
@@ -158,8 +157,7 @@ binary-arch: install-arch
 	dh_md5sums
 	dh_builddeb
 
-#binary: binary-indep binary-arch
-binary: binary-arch
+binary: binary-indep binary-arch
 
 PHONY += build clean binary-indep binary-arch binary-common binary
 PHONY += install binary binary-arch binary-indep clean checkroot get-orig-source
