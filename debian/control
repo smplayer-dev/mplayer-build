@@ -70,56 +70,22 @@ Build-Depends:
  vstream-client-dev,
  x11proto-core-dev,
  yasm,
- zlib1g-dev
-# libavcodec-dev,
-# libavformat-dev,
-# libavutil-dev,
-# libpostproc-dev,
-# libswscale-dev,
-# libass-dev
+ zlib1g-dev,
+ libavcodec-dev,
+ libavformat-dev,
+ libavutil-dev,
+ libpostproc-dev,
+ libswscale-dev,
+ libass-dev
 Build-Depends-Indep:
  docbook-xml,
  docbook-xsl,
  xsltproc
 
-Package: mplayer-gui
-Architecture: any
-Suggests: mplayer-doc,
-          ttf-freefont,
-          bzip2,
-          fontconfig
-Depends: mplayer-skin,
-         mplayer,
-         ${shlibs:Depends},
-         ${misc:Depends}
-Replaces: mplayer-doc (<< 2:1.0~rc3+svn20090426-2),
-          mplayer (<< 2:1.0~rc3+svn20090426-2)
-Description: movie player for Unix-like systems
- MPlayer plays most MPEG, VOB, AVI, Ogg/OGM, VIVO,
- ASF/WMA/WMV, QT/MOV/MP4, FLI, RM, NuppelVideo, yuv4mpeg, FILM, RoQ, PVA files,
- supported by many native, XAnim, RealPlayer, and Win32 DLL codecs. It can
- also play VideoCD, SVCD, DVD, 3ivx, RealMedia, and DivX movies.
- .
- Another big feature of MPlayer is the wide range of supported output
- drivers. It works with X11, Xv, DGA, OpenGL, SVGAlib, fbdev,
- DirectFB, but also SDL (plus all its drivers) and some
- low level card-specific drivers (for Matrox, 3Dfx and Radeon, Mach64
- and Permedia3). Most of them support software or hardware scaling,
- therefore allowing fullscreen display.  MPlayer is also able
- to use some hardware MPEG decoder boards, such as the DVB
- and DXR3/Hollywood+.
- .
- This package includes the gui variant of mplayer.
-
 Package: mencoder
 Architecture: any
-Suggests: mplayer-doc,
-          ttf-freefont,
-          bzip2,
-          fontconfig
-Depends: mplayer,
-         ${shlibs:Depends},
-         ${misc:Depends}
+Suggests: mplayer-doc, ttf-freefont, bzip2, fontconfig
+Depends: mplayer, ${shlibs:Depends}, ${misc:Depends}
 Description: MPlayer's Movie Encoder
  MPlayer plays most MPEG, VOB, AVI, Ogg/OGM, VIVO,
  ASF/WMA/WMV, QT/MOV/MP4, FLI, RM, NuppelVideo, yuv4mpeg, FILM, RoQ, PVA files,
@@ -135,16 +101,9 @@ Description: MPlayer's Movie Encoder
 
 Package: mplayer
 Architecture: any
-Suggests: mplayer-doc,
-          ttf-freefont,
-          netselect | fping,
-          bzip2,
-          fontconfig
-Depends: ${shlibs:Depends},
-         ${misc:Depends}
-Replaces: mplayer-doc (<< 2:1.0~rc3+svn20090426-2),
-          mplayer-nogui (<< 2:1.0~rc3+svn20090426-2),
-          mencoder (<< 2:1.0~rc3+svn20090426-2)
+Suggests: mplayer-doc, ttf-freefont, netselect | fping, bzip2, fontconfig
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Replaces: mplayer-doc (<< 2:1.0~rc3+svn20090426-2), mplayer-nogui (<< 2:1.0~rc3+svn20090426-2), mencoder (<< 2:1.0~rc3+svn20090426-2)
 Description: movie player for Unix-like systems
  MPlayer plays most MPEG, VOB, AVI, Ogg/OGM, VIVO,
  ASF/WMA/WMV, QT/MOV/MP4, FLI, RM, NuppelVideo, yuv4mpeg, FILM, RoQ, PVA files,
@@ -167,8 +126,7 @@ Package: mplayer-dbg
 Architecture: any
 Section: debug
 Priority: extra
-Depends: mplayer,
-         ${misc:Depends}
+Depends: mplayer, ${misc:Depends}
 Recommends: ffmpeg-dbg
 Description: debugging symbols for MPlayer
  This package contains the debugging symbols for MPlayer, a movie

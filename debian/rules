@@ -97,7 +97,6 @@ build-arch:
 	dh_prep -a
 	$(MAKE) -f debian/rules debian/mplayer/usr/bin/mplayer
 	$(MAKE) -f debian/rules debian/mencoder/usr/bin/mencoder
-	$(MAKE) -f debian/rules debian/mplayer-gui/usr/bin/gmplayer
 
 # build non-gui version
 # & mencoder
@@ -106,37 +105,14 @@ debian/mplayer/usr/bin/mplayer debian/mencoder/usr/bin/mencoder:
 	$(CLEAN_ENV) \
 	./configure $(CONFIGURE_FLAGS) --disable-gui
 	$(CLEAN_ENV) \
-	$(MAKE) $(NUMJOBS) mplayer mencoder V=1
+	#$(MAKE) $(NUMJOBS) mplayer mencoder V=1
+	$(MAKE) $(NUMJOBS) V=1
 	$(MAKE) install-mplayer DESTDIR=$(CURDIR)/debian/mplayer
 	$(MAKE) install-mplayer-man DESTDIR=$(CURDIR)/debian/mplayer
 	$(MAKE) install-mencoder DESTDIR=$(CURDIR)/debian/mencoder
 	$(MAKE) install-mencoder-man DESTDIR=$(CURDIR)/debian/mplayer
 	install -D -m 644 debian/mplayer.conf \
 	                  $(CURDIR)/debian/mplayer/etc/mplayer/mplayer.conf
-
-# build gui version
-debian/mplayer-gui/usr/bin/gmplayer:
-	dh_testdir
-	$(CLEAN_ENV) \
-	./configure $(CONFIGURE_FLAGS) --enable-gui
-	$(CLEAN_ENV) \
-	$(MAKE) $(NUMJOBS) mplayer V=1
-	install -D -m 755 mplayer $(CURDIR)/debian/mplayer-gui/usr/bin/gmplayer
-	install -D -m 644 etc/mplayer.desktop \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/applications/mplayer.desktop
-	install -D -m 644 etc/mplayer16x16.png \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/icons/hicolor/16x16/apps/mplayer.png
-	install -D -m 644 etc/mplayer22x22.png \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/icons/hicolor/22x22/apps/mplayer.png
-	install -D -m 644 etc/mplayer24x24.png \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/icons/hicolor/24x24/apps/mplayer.png
-	install -D -m 644 etc/mplayer32x32.png \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/icons/hicolor/32x32/apps/mplayer.png
-	install -D -m 644 etc/mplayer48x48.png \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/icons/hicolor/48x48/apps/mplayer.png
-	install -D -m 644 etc/mplayer256x256.png \
-	                  $(CURDIR)/debian/mplayer-gui/usr/share/icons/hicolor/256x256/apps/mplayer.png
-
 
 # binaries already installed via build rules as we have to build several flavors
 install-arch: build-arch
