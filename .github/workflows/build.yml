@@ -53,8 +53,8 @@ jobs:
         run: |
             cd MPlayer-${{env.version}}
             #fakeroot debian/rules build -j4
-            #fakeroot debian/rules binary
-            dpkg-buildpackage -uc -us -b -j4
+            fakeroot debian/rules binary -j4
+            #dpkg-buildpackage -uc -us -b -j4
             ls -l ../*.deb
 
       - name: Create artifact
