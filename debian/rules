@@ -89,7 +89,8 @@ ifneq (,$(DEB_EXTRA_CONFIGURE_FLAGS))
     CONFIGURE_FLAGS += $(DEB_EXTRA_CONFIGURE_FLAGS)
 endif
 
-build: build-arch build-indep
+#build: build-arch build-indep
+build: build-arch
 
 ####### build-arch
 build-arch:
