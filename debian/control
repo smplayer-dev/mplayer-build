@@ -77,7 +77,6 @@ Build-Depends:
 # libpostproc-dev,
 # libswscale-dev,
 # libass-dev
-
 Build-Depends-Indep:
  docbook-xml,
  docbook-xsl,
