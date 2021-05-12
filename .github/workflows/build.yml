@@ -48,3 +48,10 @@ jobs:
             ls *.deb
             dpkg --info ./mplayer-build-deps*.deb
             sudo apt-get -y install ./mplayer-build-deps*.deb --no-install-recommends
+
+      - name: Build
+        run: |
+            cd MPlayer-${{env.version}}
+            fakeroot debian/rules build
+            fakeroot debian/rules binary
+            ls -l ../*.deb
