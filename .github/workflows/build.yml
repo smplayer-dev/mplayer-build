@@ -1,0 +1,48 @@
+name: Build mplayer
+env:
+  version: '1.4'
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { name: 'xenial', os: 'ubuntu-16.04', container: 'wachii/ubuntu-qt:16.04' }
+          #- { name: 'bionic', os: 'ubuntu-18.04', container: '' }
+          #- { name: 'focal', os: 'ubuntu-20.04', container: '' }
+
+    runs-on: ${{ matrix.config.os }}
+    container: ${{ matrix.config.container }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install sources
+        run: |
+            wget http://www.mplayerhq.hu/MPlayer/releases/MPlayer-${{env.version}}.tar.xz
+            tar -xf ../MPlayer-${{env.version}}.tar.xz
+      
+      - name: Add ffmpeg repository
+        if: ${{ matrix.config.name == 'xenial' || matrix.config.name == 'bionic' }}
+        run: sudo add-apt-repository -y ppa:jonathonf/ffmpeg-4
+
+      - name: Install devscripts
+        run: |
+            sudo apt-get -y update
+            sudo apt-get -y install devscripts equivs
+            
+      - name: Install build dependencies
+        run: |
+            cd MPlayer-${{env.version}}
+            dch --create --package mplayer -v ${{env.version}}-1~`lsb_release -cs` "Automatic build"
+            mk-build-deps
+            ls *.deb
+            dpkg --info ./mplayer-build-deps*.deb
+            sudo apt-get -y install ./mplayer-build-deps*.deb --no-install-recommends
