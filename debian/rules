@@ -46,8 +46,8 @@ CONFIGURE_FLAGS = \
 	--enable-menu \
 	--disable-arts \
 	--language=all \
-	#--disable-libmpeg2-internal \
-	#--disable-ffmpeg_a \
+	--disable-libmpeg2-internal \
+	--disable-ffmpeg_a \
 	--disable-esd \
 	$(archconf)
 
