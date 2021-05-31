@@ -25,6 +25,7 @@ jobs:
                         --disable-gui \
                         --disable-mencoder \
                         --enable-runtime-cpudetection
+            make -j4
 
       - name: Build package
         run: |
